@@ -1,0 +1,42 @@
+{
+    "columnas":
+    [
+      {
+        "tipo": "string",
+        "nombre": "Nombre"
+      },
+      {
+        "tipo": "number",
+        "nombre": "Calificación"
+      }
+    ],
+  
+    "datos":
+    [
+      {
+        "sabor": "Erick Raúl",
+        "rebanadas": 10
+      },
+      {
+        "sabor": "Maria Gudalupe",
+        "rebanadas": 8
+      },
+      {
+        "sabor": "Ayelen Jacquelin",
+        "rebanadas": 5
+      },
+      {
+        "sabor": "Arlett Itzel",
+        "rebanadas": 10
+      },
+      {
+        "sabor": "Norma Bartola",
+        "rebanadas": 3
+      },
+      {
+        "sabor": "Nayeli Alcocer",
+        "rebanadas": 5
+      }
+    ]
+  
+  }

@@ -1,0 +1,41 @@
+{
+"columnas":
+    [
+      {
+        "tipo": "string",
+        "nombre": "Jugador"
+      },
+      {
+        "tipo": "number",
+        "nombre": "No. de Goles"
+      }
+    ],
+  
+    "datos":
+    [
+      {
+        "sabor": "Leonel Messi",
+        "rebanadas": 409
+      },
+      {
+        "sabor": "Naymar JR",
+        "rebanadas": 345
+      },
+      {
+        "sabor": "Cristiano Ronaldo",
+        "rebanadas": 5
+      },
+      {
+        "sabor": "Pelé",
+        "rebanadas": 620
+      },
+      {
+        "sabor": "Ronaldhino",
+        "rebanadas": 544
+      },
+      {
+        "sabor": "Javier Hernandez",
+        "rebanadas": 23
+      }
+    ]
+ }

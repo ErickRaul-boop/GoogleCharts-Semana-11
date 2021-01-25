@@ -1,0 +1,30 @@
+{
+    "columnas":
+    [
+      {
+        "tipo": "string",
+        "nombre": "Sabor"
+      },
+      {
+        "tipo": "number",
+        "nombre": "No. Rebanadas"
+      }
+    ],
+  
+    "datos":
+    [
+      {
+        "sabor": "Champiñones",
+        "rebanadas": 3
+      },
+      {
+        "sabor": "Peperoni",
+        "rebanadas": 2
+      },
+      {
+        "sabor": "Chorizo",
+        "rebanadas": 5
+      }
+    ]
+  
+  }

@@ -1,0 +1,236 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+     
+      google.charts.setOnLoadCallback(Cargar);
+
+      function Cargar(){
+        leerArchivo_Linea("dad.json");
+        leerArchivo_Barra("dad.json");
+        leerArchivo_Pie("dad.json");
+        leerArchivo_Scatter("dad.json");
+        leerArchivo_Area("dad.json");
+      }
+
+    
+
+   
+    function leerArchivo_Pie(archivo){
+      fetch(archivo)
+        .then(response => response.json())
+        .then(json => drawCharPie(json));
+    }
+
+    function leerArchivo_Linea(archivo){
+      fetch(archivo)
+        .then(response => response.json())
+        .then(json => drawCharLinea(json));
+    }
+
+    function leerArchivo_Barra(archivo){
+      fetch(archivo)
+        .then(response => response.json())
+        .then(json => drawCharBarra(json));
+    }
+
+    function leerArchivo_Area(archivo){
+      fetch(archivo)
+        .then(response => response.json())
+        .then(json => drawCharArea(json));
+    }
+
+    function leerArchivo_Scatter(archivo){
+      fetch(archivo)
+        .then(response => response.json())
+        .then(json => drawCharScatter(json));
+    }
+
+    function input_linea(e){
+      var file=e.target.files[0];
+      if(!file){
+        return;
+      }
+      leerArchivo_Linea(file.name);
+    }
+
+    function input_barra(e){
+      var file=e.target.files[0];
+      if(!file){
+        return;
+      }
+      leerArchivo_Barra(file.name);
+    }
+
+    function input_area(e){
+      var file=e.target.files[0];
+      if(!file){
+        return;
+      }
+      leerArchivo_Area(file.name);
+    }
+
+    function input_scatter(e){
+      var file=e.target.files[0];
+      if(!file){
+        return;
+      }
+      leerArchivo_Scatter(file.name);
+    }
+
+    function input_pie(e){
+      var file=e.target.files[0];
+      if(!file){
+        return;
+      }
+      leerArchivo_Pie(file.name);
+    }
+
+ 
+      
+      function drawCharPie(p) {
+
+        // Create the data table.
+        var data=crearDataTable(p);
+        
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+        'width':400,
+        'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div_Pie'));
+        chart.draw(data, options);
+      }
+
+      function drawCharLinea(p) {
+
+        // Create the data table.
+        var data=crearDataTable(p);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+        'width':400,
+        'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div_Linea'));
+        chart.draw(data, options);
+      } 
+
+      function drawCharBarra(p) {
+
+      // Create the data table.
+      var data=crearDataTable(p);
+
+      // Set chart options
+      var options = {'title':'How Much Pizza I Ate Last Night',
+      'width':400,
+      'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.ColumnChart(document.getElementById('chart_div_Barra'));
+      chart.draw(data, options);
+    } 
+
+      function drawCharScatter(p) {
+
+      // Create the data table.
+      var data=crearDataTable(p);
+
+      // Set chart options
+      var options = {'title':'How Much Pizza I Ate Last Night',
+      'width':400,
+      'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_Scatter'));
+      chart.draw(data, options);
+    } 
+
+      function drawCharArea(p) {
+    // Create the data table.
+      var data=crearDataTable(p);
+
+      // Set chart options
+      var options = {'title':'How Much Pizza I Ate Last Night',
+      'width':400,
+      'height':300};
+
+      // Instantiate and draw our chart, passing in some options.
+      var chart = new google.visualization.AreaChart(document.getElementById('chart_div_Area'));
+      chart.draw(data, options);
+    } 
+     
+      function crearDataTable(d){
+        var data=new google.visualization.DataTable();
+        //creamos las columnas de la tabla
+        for(i=0;i<d.columnas.length;i++)
+          data.addColumn(d.columnas[i].tipo,d.columnas[i].nombre);
+        //Cargamos cada una de las tuplas o registros en el dataTable
+        for(i=0;i<d.datos.length;i++){
+          //creamos un arreglo que contiene una tupla o renglon para insertar en el DataTable
+          let tupla=[];
+          for(const property in d.datos[i]){
+            tupla.push(d.datos[i][property]);
+          }
+          //Agregamos la tupla que acabamos de crear
+          data.addRows([tupla]);
+        }
+        return data;
+
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <!--<input type="button"  id="boton" onclick="LeerArchivo();">-->
+    <h2>Lineas</h2>
+    <div id="chart_div_Linea" style="width: 700px; height: 300px;"></div>
+    <input type="file"  id="file_linea">
+    
+    
+    <h2>Área</h2>
+    <div id="chart_div_Area" style="width: 700px; height: 300px;"></div>
+    <input type="file"  id="file_area">
+    
+    <h2>Barra</h2>
+    <div id="chart_div_Barra" style="width: 700px; height: 300px;"></div>
+    <input type="file"  id="file_barra">
+    
+
+    <h2>Scatter</h2>
+    <div id="chart_div_Scatter" style="width: 700px; height: 300px;"></div>
+    <input type="file"  id="file_scatter">
+    
+    <h2>Pie</h2>
+    <div id="chart_div_Pie" style="width: 700px; height: 300px;"></div>
+    <input type="file"  id="file_pie">
+
+  </body>
+
+  <script type="text/javascript">
+   document.getElementById('file_linea')
+      .addEventListener('change',input_linea,false);
+
+    document.getElementById('file_area')
+      .addEventListener('change',input_area,false);
+
+    document.getElementById('file_barra')
+      .addEventListener('change',input_barra,false);
+
+    document.getElementById('file_scatter')
+      .addEventListener('change',input_scatter,false);
+
+    document.getElementById('file_pie')
+      .addEventListener('change',input_pie,false);
+  
+  </script>
+</html>
